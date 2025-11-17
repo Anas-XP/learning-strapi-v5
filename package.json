@@ -13,7 +13,8 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "generate-specs": "strapi openapi generate"
   },
   "dependencies": {
     "@sensinum/strapi-plugin-mcp": "^1.1.0",
@@ -27,6 +28,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-auto-slug-manager-a-mi13": "^1.1.0",
     "strapi-plugin-io": "^2.0.6",
     "styled-components": "^6.0.0"
   },
