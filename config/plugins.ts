@@ -1,10 +1,4 @@
 export default () => ({
-  io: {
-    enabled: true,
-    config: {
-      contentTypes: [],
-    },
-  },
   "auto-slug-manager": {
     enabled: true,
     config: {
