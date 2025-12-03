@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "x-powered-by": "strapi",
-  "x-strapi-version": "5.30.0",
+  "x-strapi-version": "5.31.2",
   "info": {
     "title": "learning-strapi-v-5",
     "description": "API documentation for learning-strapi-v-5 v0.1.0",
@@ -312,7 +312,7 @@
                           },
                           "publishedAt": {
                             "description": "A datetime field",
-                            "default": "2025-11-06T15:02:43.446Z",
+                            "default": "2025-12-02T13:55:32.966Z",
                             "type": "string"
                           },
                           "locale": {
@@ -483,7 +483,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.459Z",
+                          "default": "2025-12-02T13:55:32.982Z",
                           "type": "string"
                         },
                         "locale": {
@@ -558,7 +558,7 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "default": "2025-11-06T15:02:43.459Z",
+                        "default": "2025-12-02T13:55:32.981Z",
                         "type": "string"
                       },
                       "locale": {
@@ -820,7 +820,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.457Z",
+                          "default": "2025-12-02T13:55:32.979Z",
                           "type": "string"
                         },
                         "locale": {
@@ -1002,7 +1002,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.461Z",
+                          "default": "2025-12-02T13:55:32.985Z",
                           "type": "string"
                         },
                         "locale": {
@@ -1077,7 +1077,7 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "default": "2025-11-06T15:02:43.460Z",
+                        "default": "2025-12-02T13:55:32.984Z",
                         "type": "string"
                       },
                       "locale": {
@@ -1252,7 +1252,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.465Z",
+                          "default": "2025-12-02T13:55:32.986Z",
                           "type": "string"
                         },
                         "locale": {
@@ -1613,7 +1613,7 @@
                           },
                           "publishedAt": {
                             "description": "A datetime field",
-                            "default": "2025-11-06T15:02:43.469Z",
+                            "default": "2025-12-02T13:55:32.996Z",
                             "type": "string"
                           },
                           "locale": {
@@ -1784,7 +1784,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.472Z",
+                          "default": "2025-12-02T13:55:33.000Z",
                           "type": "string"
                         },
                         "locale": {
@@ -1859,7 +1859,7 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "default": "2025-11-06T15:02:43.472Z",
+                        "default": "2025-12-02T13:55:33.000Z",
                         "type": "string"
                       },
                       "locale": {
@@ -2121,7 +2121,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.471Z",
+                          "default": "2025-12-02T13:55:32.999Z",
                           "type": "string"
                         },
                         "locale": {
@@ -2303,7 +2303,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.474Z",
+                          "default": "2025-12-02T13:55:33.002Z",
                           "type": "string"
                         },
                         "locale": {
@@ -2378,7 +2378,7 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "default": "2025-11-06T15:02:43.473Z",
+                        "default": "2025-12-02T13:55:33.002Z",
                         "type": "string"
                       },
                       "locale": {
@@ -2553,7 +2553,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.475Z",
+                          "default": "2025-12-02T13:55:33.004Z",
                           "type": "string"
                         },
                         "locale": {
@@ -2973,7 +2973,7 @@
                           },
                           "publishedAt": {
                             "description": "A datetime field",
-                            "default": "2025-11-06T15:02:43.482Z",
+                            "default": "2025-12-02T13:55:33.008Z",
                             "type": "string"
                           },
                           "locale": {
@@ -3193,7 +3193,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.489Z",
+                          "default": "2025-12-02T13:55:33.017Z",
                           "type": "string"
                         },
                         "locale": {
@@ -3316,7 +3316,7 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "default": "2025-11-06T15:02:43.488Z",
+                        "default": "2025-12-02T13:55:33.016Z",
                         "type": "string"
                       },
                       "locale": {
@@ -3653,7 +3653,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.485Z",
+                          "default": "2025-12-02T13:55:33.014Z",
                           "type": "string"
                         },
                         "locale": {
@@ -3884,7 +3884,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.492Z",
+                          "default": "2025-12-02T13:55:33.020Z",
                           "type": "string"
                         },
                         "locale": {
@@ -4007,7 +4007,7 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "default": "2025-11-06T15:02:43.491Z",
+                        "default": "2025-12-02T13:55:33.019Z",
                         "type": "string"
                       },
                       "locale": {
@@ -4236,7 +4236,7 @@
                         },
                         "publishedAt": {
                           "description": "A datetime field",
-                          "default": "2025-11-06T15:02:43.494Z",
+                          "default": "2025-12-02T13:55:33.022Z",
                           "type": "string"
                         },
                         "locale": {
@@ -7164,80 +7164,6 @@
         },
         "tags": [
           "i18n"
-        ]
-      }
-    },
-    "/streamable": {
-      "get": {
-        "operationId": "mcp/get/streamable",
-        "parameters": [],
-        "responses": {
-          "400": {
-            "description": "Bad request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "tags": [
-          "mcp"
-        ]
-      },
-      "post": {
-        "operationId": "mcp/post/streamable",
-        "parameters": [],
-        "responses": {
-          "400": {
-            "description": "Bad request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "tags": [
-          "mcp"
-        ]
-      },
-      "delete": {
-        "operationId": "mcp/delete/streamable",
-        "parameters": [],
-        "responses": {
-          "400": {
-            "description": "Bad request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "tags": [
-          "mcp"
         ]
       }
     },
@@ -10225,6 +10151,80 @@
           "users-permissions"
         ]
       }
+    },
+    "/streamable": {
+      "get": {
+        "operationId": "mcp/get/streamable",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "tags": [
+          "mcp"
+        ]
+      },
+      "post": {
+        "operationId": "mcp/post/streamable",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "tags": [
+          "mcp"
+        ]
+      },
+      "delete": {
+        "operationId": "mcp/delete/streamable",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "tags": [
+          "mcp"
+        ]
+      }
     }
   },
   "components": {
@@ -10310,7 +10310,7 @@
           },
           "publishedAt": {
             "description": "A datetime field",
-            "default": "2025-11-06T15:02:43.452Z",
+            "default": "2025-12-02T13:55:32.972Z",
             "type": "string"
           },
           "related": {}
@@ -10361,7 +10361,7 @@
           },
           "publishedAt": {
             "description": "A datetime field",
-            "default": "2025-11-06T15:02:43.453Z",
+            "default": "2025-12-02T13:55:32.973Z",
             "type": "string"
           },
           "locale": {
@@ -10420,7 +10420,7 @@
           },
           "publishedAt": {
             "description": "A datetime field",
-            "default": "2025-11-06T15:02:43.454Z",
+            "default": "2025-12-02T13:55:32.975Z",
             "type": "string"
           },
           "locale": {
@@ -10504,7 +10504,7 @@
           },
           "publishedAt": {
             "description": "A datetime field",
-            "default": "2025-11-06T15:02:43.449Z",
+            "default": "2025-12-02T13:55:32.969Z",
             "type": "string"
           },
           "locale": {
