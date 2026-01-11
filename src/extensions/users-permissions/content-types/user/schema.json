@@ -69,6 +69,12 @@
     "isPhoneVerified": {
       "type": "boolean",
       "default": false
+    },
+    "phone_numvers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::phone-numver.phone-numver",
+      "mappedBy": "user"
     }
   }
 }

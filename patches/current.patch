@@ -1,0 +1,1157 @@
+diff --git a/scripts/patch-openapi-spec.js b/scripts/patch-openapi-spec.js
+index a10fa99..e513238 100644
+--- a/scripts/patch-openapi-spec.js
++++ b/scripts/patch-openapi-spec.js
+@@ -41,9 +41,50 @@ if (callbackPath && callbackPath.get) {
+     });
+   }
+ 
+-  // Write back
+-  fs.writeFileSync(specPath, JSON.stringify(spec, null, 2));
+-  console.log('✅ Added OAuth parameters to specification.json');
++  console.log('✅ Added OAuth parameters to auth callback endpoint');
+ } else {
+   console.log('❌ Could not find /auth/{provider}/callback endpoint');
+ }
++
++// Helper function to patch user endpoint response schema
++function patchUserEndpoint(path, method, endpointName) {
++  const endpoint = spec.paths[path];
++  if (endpoint?.[method]?.responses['200']) {
++    const responseContent = endpoint[method].responses['200'].content?.['application/json'];
++    if (responseContent?.schema) {
++      // For list endpoints, wrap in data array
++      if (path === '/users') {
++        responseContent.schema = {
++          type: 'object',
++          properties: {
++            data: {
++              type: 'array',
++              items: {
++                "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
++              }
++            },
++            meta: { type: 'object' }
++          }
++        };
++      } else {
++        // For single user endpoints
++        responseContent.schema = {
++          "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
++        };
++      }
++      console.log(`✅ Updated ${endpointName} to reference PluginUsersPermissionsUserDocument`);
++      return true;
++    }
++  }
++  console.log(`❌ Could not patch ${endpointName} endpoint`);
++  return false;
++}
++
++// Patch all user endpoints
++patchUserEndpoint('/users/me', 'get', '/users/me');
++patchUserEndpoint('/users', 'get', '/users');
++patchUserEndpoint('/users/{id}', 'get', '/users/{id}');
++
++// Write back
++fs.writeFileSync(specPath, JSON.stringify(spec, null, 2));
++console.log('✅ Specification patching complete');
+diff --git a/specification.json b/specification.json
+index 10deab6..95a9bf5 100644
+--- a/specification.json
++++ b/specification.json
+@@ -292,7 +292,7 @@
+                           },
+                           "publishedAt": {
+                             "description": "A datetime field",
+-                            "default": "2026-01-02T00:32:18.590Z",
++                            "default": "2026-01-02T01:59:22.495Z",
+                             "type": "string"
+                           },
+                           "user": {
+@@ -441,7 +441,7 @@
+                         },
+                         "publishedAt": {
+                           "description": "A datetime field",
+-                          "default": "2026-01-02T00:32:18.594Z",
++                          "default": "2026-01-02T01:59:22.500Z",
+                           "type": "string"
+                         },
+                         "user": {
+@@ -502,7 +502,7 @@
+                       },
+                       "publishedAt": {
+                         "description": "A datetime field",
+-                        "default": "2026-01-02T00:32:18.594Z",
++                        "default": "2026-01-02T01:59:22.500Z",
+                         "type": "string"
+                       },
+                       "user": {
+@@ -740,7 +740,7 @@
+                         },
+                         "publishedAt": {
+                           "description": "A datetime field",
+-                          "default": "2026-01-02T00:32:18.593Z",
++                          "default": "2026-01-02T01:59:22.499Z",
+                           "type": "string"
+                         },
+                         "user": {
+@@ -900,7 +900,7 @@
+                         },
+                         "publishedAt": {
+                           "description": "A datetime field",
+-                          "default": "2026-01-02T00:32:18.595Z",
++                          "default": "2026-01-02T01:59:22.501Z",
+                           "type": "string"
+                         },
+                         "user": {
+@@ -961,7 +961,7 @@
+                       },
+                       "publishedAt": {
+                         "description": "A datetime field",
+-                        "default": "2026-01-02T00:32:18.594Z",
++                        "default": "2026-01-02T01:59:22.500Z",
+                         "type": "string"
+                       },
+                       "user": {
+@@ -1120,7 +1120,7 @@
+                         },
+                         "publishedAt": {
+                           "description": "A datetime field",
+-                          "default": "2026-01-02T00:32:18.595Z",
++                          "default": "2026-01-02T01:59:22.501Z",
+                           "type": "string"
+                         },
+                         "user": {
+@@ -5483,101 +5483,17 @@
+             "content": {
+               "application/json": {
+                 "schema": {
+-                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+-                  "type": "array",
+-                  "items": {
+-                    "type": "object",
+-                    "properties": {
+-                      "id": {
+-                        "type": "number"
+-                      },
+-                      "documentId": {
+-                        "type": "string"
+-                      },
+-                      "username": {
+-                        "type": "string"
+-                      },
+-                      "email": {
+-                        "type": "string"
+-                      },
+-                      "provider": {
+-                        "type": "string"
+-                      },
+-                      "confirmed": {
+-                        "type": "boolean"
+-                      },
+-                      "blocked": {
+-                        "type": "boolean"
+-                      },
+-                      "role": {
+-                        "anyOf": [
+-                          {
+-                            "type": "number"
+-                          },
+-                          {
+-                            "type": "object",
+-                            "properties": {
+-                              "id": {
+-                                "type": "number"
+-                              },
+-                              "name": {
+-                                "type": "string"
+-                              },
+-                              "description": {
+-                                "anyOf": [
+-                                  {
+-                                    "type": "string"
+-                                  },
+-                                  {
+-                                    "type": "null"
+-                                  }
+-                                ]
+-                              },
+-                              "type": {
+-                                "type": "string"
+-                              },
+-                              "createdAt": {
+-                                "type": "string"
+-                              },
+-                              "updatedAt": {
+-                                "type": "string"
+-                              }
+-                            },
+-                            "required": [
+-                              "id",
+-                              "name",
+-                              "description",
+-                              "type",
+-                              "createdAt",
+-                              "updatedAt"
+-                            ],
+-                            "additionalProperties": false
+-                          }
+-                        ]
+-                      },
+-                      "createdAt": {
+-                        "type": "string"
+-                      },
+-                      "updatedAt": {
+-                        "type": "string"
+-                      },
+-                      "publishedAt": {
+-                        "type": "string"
++                  "type": "object",
++                  "properties": {
++                    "data": {
++                      "type": "array",
++                      "items": {
++                        "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                       }
+                     },
+-                    "required": [
+-                      "id",
+-                      "documentId",
+-                      "username",
+-                      "email",
+-                      "provider",
+-                      "confirmed",
+-                      "blocked",
+-                      "createdAt",
+-                      "updatedAt",
+-                      "publishedAt"
+-                    ],
+-                    "additionalProperties": false
++                    "meta": {
++                      "type": "object"
++                    }
+                   }
+                 }
+               }
+@@ -5826,99 +5742,7 @@
+             "content": {
+               "application/json": {
+                 "schema": {
+-                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+-                  "type": "object",
+-                  "properties": {
+-                    "id": {
+-                      "type": "number"
+-                    },
+-                    "documentId": {
+-                      "type": "string"
+-                    },
+-                    "username": {
+-                      "type": "string"
+-                    },
+-                    "email": {
+-                      "type": "string"
+-                    },
+-                    "provider": {
+-                      "type": "string"
+-                    },
+-                    "confirmed": {
+-                      "type": "boolean"
+-                    },
+-                    "blocked": {
+-                      "type": "boolean"
+-                    },
+-                    "role": {
+-                      "anyOf": [
+-                        {
+-                          "type": "number"
+-                        },
+-                        {
+-                          "type": "object",
+-                          "properties": {
+-                            "id": {
+-                              "type": "number"
+-                            },
+-                            "name": {
+-                              "type": "string"
+-                            },
+-                            "description": {
+-                              "anyOf": [
+-                                {
+-                                  "type": "string"
+-                                },
+-                                {
+-                                  "type": "null"
+-                                }
+-                              ]
+-                            },
+-                            "type": {
+-                              "type": "string"
+-                            },
+-                            "createdAt": {
+-                              "type": "string"
+-                            },
+-                            "updatedAt": {
+-                              "type": "string"
+-                            }
+-                          },
+-                          "required": [
+-                            "id",
+-                            "name",
+-                            "description",
+-                            "type",
+-                            "createdAt",
+-                            "updatedAt"
+-                          ],
+-                          "additionalProperties": false
+-                        }
+-                      ]
+-                    },
+-                    "createdAt": {
+-                      "type": "string"
+-                    },
+-                    "updatedAt": {
+-                      "type": "string"
+-                    },
+-                    "publishedAt": {
+-                      "type": "string"
+-                    }
+-                  },
+-                  "required": [
+-                    "id",
+-                    "documentId",
+-                    "username",
+-                    "email",
+-                    "provider",
+-                    "confirmed",
+-                    "blocked",
+-                    "createdAt",
+-                    "updatedAt",
+-                    "publishedAt"
+-                  ],
+-                  "additionalProperties": false
++                  "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                 }
+               }
+             }
+@@ -6017,99 +5841,7 @@
+             "content": {
+               "application/json": {
+                 "schema": {
+-                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+-                  "type": "object",
+-                  "properties": {
+-                    "id": {
+-                      "type": "number"
+-                    },
+-                    "documentId": {
+-                      "type": "string"
+-                    },
+-                    "username": {
+-                      "type": "string"
+-                    },
+-                    "email": {
+-                      "type": "string"
+-                    },
+-                    "provider": {
+-                      "type": "string"
+-                    },
+-                    "confirmed": {
+-                      "type": "boolean"
+-                    },
+-                    "blocked": {
+-                      "type": "boolean"
+-                    },
+-                    "role": {
+-                      "anyOf": [
+-                        {
+-                          "type": "number"
+-                        },
+-                        {
+-                          "type": "object",
+-                          "properties": {
+-                            "id": {
+-                              "type": "number"
+-                            },
+-                            "name": {
+-                              "type": "string"
+-                            },
+-                            "description": {
+-                              "anyOf": [
+-                                {
+-                                  "type": "string"
+-                                },
+-                                {
+-                                  "type": "null"
+-                                }
+-                              ]
+-                            },
+-                            "type": {
+-                              "type": "string"
+-                            },
+-                            "createdAt": {
+-                              "type": "string"
+-                            },
+-                            "updatedAt": {
+-                              "type": "string"
+-                            }
+-                          },
+-                          "required": [
+-                            "id",
+-                            "name",
+-                            "description",
+-                            "type",
+-                            "createdAt",
+-                            "updatedAt"
+-                          ],
+-                          "additionalProperties": false
+-                        }
+-                      ]
+-                    },
+-                    "createdAt": {
+-                      "type": "string"
+-                    },
+-                    "updatedAt": {
+-                      "type": "string"
+-                    },
+-                    "publishedAt": {
+-                      "type": "string"
+-                    }
+-                  },
+-                  "required": [
+-                    "id",
+-                    "documentId",
+-                    "username",
+-                    "email",
+-                    "provider",
+-                    "confirmed",
+-                    "blocked",
+-                    "createdAt",
+-                    "updatedAt",
+-                    "publishedAt"
+-                  ],
+-                  "additionalProperties": false
++                  "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                 }
+               }
+             }
+@@ -7140,7 +6872,7 @@
+           },
+           "publishedAt": {
+             "description": "A datetime field",
+-            "default": "2026-01-02T00:32:18.592Z",
++            "default": "2026-01-02T01:59:22.497Z",
+             "type": "string"
+           },
+           "role": {
+@@ -7199,7 +6931,7 @@
+           },
+           "publishedAt": {
+             "description": "A datetime field",
+-            "default": "2026-01-02T00:32:18.591Z",
++            "default": "2026-01-02T01:59:22.497Z",
+             "type": "string"
+           },
+           "permissions": {
+@@ -7262,7 +6994,7 @@
+           },
+           "publishedAt": {
+             "description": "A datetime field",
+-            "default": "2026-01-02T00:32:18.592Z",
++            "default": "2026-01-02T01:59:22.498Z",
+             "type": "string"
+           },
+           "user": {
+@@ -7358,7 +7090,7 @@
+           },
+           "publishedAt": {
+             "description": "A datetime field",
+-            "default": "2026-01-02T00:32:18.591Z",
++            "default": "2026-01-02T01:59:22.497Z",
+             "type": "string"
+           },
+           "role": {
+diff --git a/src/extensions/documentation/documentation/1.0.0/full_documentation.json b/src/extensions/documentation/documentation/1.0.0/full_documentation.json
+index b81592c..89e77c5 100644
+--- a/src/extensions/documentation/documentation/1.0.0/full_documentation.json
++++ b/src/extensions/documentation/documentation/1.0.0/full_documentation.json
+@@ -14,7 +14,7 @@
+       "name": "Apache 2.0",
+       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+     },
+-    "x-generation-date": "2026-01-02T00:32:20.114Z"
++    "x-generation-date": "2026-01-02T01:59:23.991Z"
+   },
+   "x-strapi-config": {
+     "plugins": [
+@@ -1532,375 +1532,245 @@
+     },
+     "/users": {
+       "get": {
+-        "tags": [
+-          "Users-Permissions - Users & Roles"
+-        ],
+-        "summary": "Get list of users",
+         "responses": {
+           "200": {
+-            "description": "Returns an array of users",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "type": "array",
+-                  "items": {
+-                    "$ref": "#/components/schemas/Users-Permissions-User"
+-                  }
+-                },
+-                "example": [
+-                  {
+-                    "id": 9,
+-                    "username": "foao@strapi.io",
+-                    "email": "foao@strapi.io",
+-                    "provider": "local",
+-                    "confirmed": false,
+-                    "blocked": false,
+-                    "createdAt": "2022-06-01T18:32:35.211Z",
+-                    "updatedAt": "2022-06-01T18:32:35.217Z"
+-                  }
+-                ]
+-              }
+-            }
+-          },
+-          "default": {
+-            "description": "Error",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "$ref": "#/components/schemas/Error"
+-                }
+-              }
+-            }
+-          }
+-        }
+-      },
+-      "post": {
+-        "tags": [
+-          "Users-Permissions - Users & Roles"
+-        ],
+-        "summary": "Create a user",
+-        "requestBody": {
+-          "required": true,
+-          "content": {
+-            "application/json": {
+-              "schema": {
+-                "type": "object",
+-                "required": [
+-                  "username",
+-                  "email",
+-                  "password"
+-                ],
+-                "properties": {
+-                  "email": {
+-                    "type": "string"
+-                  },
+-                  "username": {
+-                    "type": "string"
+-                  },
+-                  "password": {
+-                    "type": "string"
+-                  }
+-                }
+-              },
+-              "example": {
+-                "username": "foo",
+-                "email": "foo@strapi.io",
+-                "password": "foo-password"
+-              }
+-            }
+-          }
+-        },
+-        "responses": {
+-          "201": {
+-            "description": "Returns created user info",
++            "description": "Returns a list of users",
+             "content": {
+               "application/json": {
+                 "schema": {
+-                  "allOf": [
+-                    {
+-                      "$ref": "#/components/schemas/Users-Permissions-User"
+-                    },
+-                    {
+-                      "type": "object",
+-                      "properties": {
+-                        "role": {
+-                          "$ref": "#/components/schemas/Users-Permissions-Role"
++                  "type": "object",
++                  "properties": {
++                    "data": {
++                      "type": "array",
++                      "items": {
++                        "type": "object",
++                        "properties": {
++                          "id": {
++                            "type": "number"
++                          },
++                          "documentId": {
++                            "type": "string"
++                          },
++                          "username": {
++                            "type": "string"
++                          },
++                          "email": {
++                            "type": "string",
++                            "format": "email"
++                          },
++                          "provider": {
++                            "type": "string"
++                          },
++                          "confirmed": {
++                            "type": "boolean"
++                          },
++                          "blocked": {
++                            "type": "boolean"
++                          },
++                          "isPhoneVerified": {
++                            "type": "boolean",
++                            "default": false
++                          },
++                          "phone_numvers": {
++                            "type": "array",
++                            "items": {
++                              "type": "object"
++                            }
++                          },
++                          "role": {
++                            "type": "object",
++                            "properties": {
++                              "id": {
++                                "type": "number"
++                              },
++                              "name": {
++                                "type": "string"
++                              },
++                              "description": {
++                                "type": "string"
++                              },
++                              "type": {
++                                "type": "string"
++                              }
++                            }
++                          },
++                          "createdAt": {
++                            "type": "string",
++                            "format": "date-time"
++                          },
++                          "updatedAt": {
++                            "type": "string",
++                            "format": "date-time"
++                          },
++                          "publishedAt": {
++                            "type": "string",
++                            "format": "date-time"
++                          }
+                         }
+                       }
++                    },
++                    "meta": {
++                      "type": "object"
+                     }
+-                  ]
+-                },
+-                "example": {
+-                  "id": 1,
+-                  "username": "foo",
+-                  "email": "foo@strapi.io",
+-                  "provider": "local",
+-                  "confirmed": false,
+-                  "blocked": false,
+-                  "createdAt": "2022-05-19T17:35:35.096Z",
+-                  "updatedAt": "2022-05-19T17:35:35.096Z",
+-                  "role": {
+-                    "id": 1,
+-                    "name": "X",
+-                    "description": "Default role given to authenticated user.",
+-                    "type": "authenticated",
+-                    "createdAt": "2022-05-19T17:35:35.096Z",
+-                    "updatedAt": "2022-06-04T07:11:59.551Z"
+                   }
+                 }
+               }
+             }
+-          },
+-          "default": {
+-            "description": "Error",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "$ref": "#/components/schemas/Error"
+-                }
+-              }
+-            }
+           }
+         }
+       }
+     },
+     "/users/{id}": {
+       "get": {
+-        "tags": [
+-          "Users-Permissions - Users & Roles"
+-        ],
+-        "summary": "Get a user",
+-        "parameters": [
+-          {
+-            "in": "path",
+-            "name": "id",
+-            "required": true,
+-            "schema": {
+-              "type": "string"
+-            },
+-            "description": "user Id"
+-          }
+-        ],
+-        "responses": {
+-          "200": {
+-            "description": "Returns a user",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "$ref": "#/components/schemas/Users-Permissions-User"
+-                },
+-                "example": {
+-                  "id": 1,
+-                  "username": "foo",
+-                  "email": "foo@strapi.io",
+-                  "provider": "local",
+-                  "confirmed": false,
+-                  "blocked": false,
+-                  "createdAt": "2022-05-19T17:35:35.096Z",
+-                  "updatedAt": "2022-05-19T17:35:35.096Z"
+-                }
+-              }
+-            }
+-          },
+-          "default": {
+-            "description": "Error",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "$ref": "#/components/schemas/Error"
+-                }
+-              }
+-            }
+-          }
+-        }
+-      },
+-      "put": {
+-        "tags": [
+-          "Users-Permissions - Users & Roles"
+-        ],
+-        "summary": "Update a user",
+-        "parameters": [
+-          {
+-            "in": "path",
+-            "name": "id",
+-            "required": true,
+-            "schema": {
+-              "type": "string"
+-            },
+-            "description": "user Id"
+-          }
+-        ],
+-        "requestBody": {
+-          "required": true,
+-          "content": {
+-            "application/json": {
+-              "schema": {
+-                "type": "object",
+-                "required": [
+-                  "username",
+-                  "email",
+-                  "password"
+-                ],
+-                "properties": {
+-                  "email": {
+-                    "type": "string"
+-                  },
+-                  "username": {
+-                    "type": "string"
+-                  },
+-                  "password": {
+-                    "type": "string"
+-                  }
+-                }
+-              },
+-              "example": {
+-                "username": "foo",
+-                "email": "foo@strapi.io",
+-                "password": "foo-password"
+-              }
+-            }
+-          }
+-        },
+         "responses": {
+           "200": {
+-            "description": "Returns updated user info",
++            "description": "Returns a specific user",
+             "content": {
+               "application/json": {
+                 "schema": {
+-                  "allOf": [
+-                    {
+-                      "$ref": "#/components/schemas/Users-Permissions-User"
++                  "type": "object",
++                  "properties": {
++                    "id": {
++                      "type": "number"
+                     },
+-                    {
++                    "documentId": {
++                      "type": "string"
++                    },
++                    "username": {
++                      "type": "string"
++                    },
++                    "email": {
++                      "type": "string",
++                      "format": "email"
++                    },
++                    "provider": {
++                      "type": "string"
++                    },
++                    "confirmed": {
++                      "type": "boolean"
++                    },
++                    "blocked": {
++                      "type": "boolean"
++                    },
++                    "isPhoneVerified": {
++                      "type": "boolean",
++                      "default": false
++                    },
++                    "phone_numvers": {
++                      "type": "array",
++                      "items": {
++                        "type": "object"
++                      }
++                    },
++                    "role": {
+                       "type": "object",
+                       "properties": {
+-                        "role": {
+-                          "$ref": "#/components/schemas/Users-Permissions-Role"
++                        "id": {
++                          "type": "number"
++                        },
++                        "name": {
++                          "type": "string"
++                        },
++                        "description": {
++                          "type": "string"
++                        },
++                        "type": {
++                          "type": "string"
+                         }
+                       }
++                    },
++                    "createdAt": {
++                      "type": "string",
++                      "format": "date-time"
++                    },
++                    "updatedAt": {
++                      "type": "string",
++                      "format": "date-time"
++                    },
++                    "publishedAt": {
++                      "type": "string",
++                      "format": "date-time"
+                     }
+-                  ]
+-                },
+-                "example": {
+-                  "id": 1,
+-                  "username": "foo",
+-                  "email": "foo@strapi.io",
+-                  "provider": "local",
+-                  "confirmed": false,
+-                  "blocked": false,
+-                  "createdAt": "2022-05-19T17:35:35.096Z",
+-                  "updatedAt": "2022-05-19T17:35:35.096Z",
+-                  "role": {
+-                    "id": 1,
+-                    "name": "X",
+-                    "description": "Default role given to authenticated user.",
+-                    "type": "authenticated",
+-                    "createdAt": "2022-05-19T17:35:35.096Z",
+-                    "updatedAt": "2022-06-04T07:11:59.551Z"
+                   }
+                 }
+               }
+             }
+-          },
+-          "default": {
+-            "description": "Error",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "$ref": "#/components/schemas/Error"
+-                }
+-              }
+-            }
+-          }
+-        }
+-      },
+-      "delete": {
+-        "tags": [
+-          "Users-Permissions - Users & Roles"
+-        ],
+-        "summary": "Delete a user",
+-        "parameters": [
+-          {
+-            "in": "path",
+-            "name": "id",
+-            "required": true,
+-            "schema": {
+-              "type": "string"
+-            },
+-            "description": "user Id"
+-          }
+-        ],
+-        "responses": {
+-          "200": {
+-            "description": "Returns deleted user info",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "allOf": [
+-                    {
+-                      "$ref": "#/components/schemas/Users-Permissions-User"
+-                    }
+-                  ]
+-                },
+-                "example": {
+-                  "id": 1,
+-                  "username": "foo",
+-                  "email": "foo@strapi.io",
+-                  "provider": "local",
+-                  "confirmed": false,
+-                  "blocked": false,
+-                  "createdAt": "2022-05-19T17:35:35.096Z",
+-                  "updatedAt": "2022-05-19T17:35:35.096Z"
+-                }
+-              }
+-            }
+-          },
+-          "default": {
+-            "description": "Error",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "$ref": "#/components/schemas/Error"
+-                }
+-              }
+-            }
+           }
+         }
+       }
+     },
+     "/users/me": {
+       "get": {
+-        "tags": [
+-          "Users-Permissions - Users & Roles"
+-        ],
+-        "summary": "Get authenticated user info",
+         "responses": {
+           "200": {
+-            "description": "Returns user info",
+-            "content": {
+-              "application/json": {
+-                "schema": {
+-                  "$ref": "#/components/schemas/Users-Permissions-User"
+-                },
+-                "example": {
+-                  "id": 1,
+-                  "username": "foo",
+-                  "email": "foo@strapi.io",
+-                  "provider": "local",
+-                  "confirmed": false,
+-                  "blocked": false,
+-                  "createdAt": "2022-05-19T17:35:35.096Z",
+-                  "updatedAt": "2022-05-19T17:35:35.096Z"
+-                }
+-              }
+-            }
+-          },
+-          "default": {
+-            "description": "Error",
++            "description": "Returns the authenticated user information",
+             "content": {
+               "application/json": {
+                 "schema": {
+-                  "$ref": "#/components/schemas/Error"
++                  "type": "object",
++                  "properties": {
++                    "id": {
++                      "type": "number"
++                    },
++                    "documentId": {
++                      "type": "string"
++                    },
++                    "username": {
++                      "type": "string"
++                    },
++                    "email": {
++                      "type": "string",
++                      "format": "email"
++                    },
++                    "provider": {
++                      "type": "string"
++                    },
++                    "confirmed": {
++                      "type": "boolean"
++                    },
++                    "blocked": {
++                      "type": "boolean"
++                    },
++                    "isPhoneVerified": {
++                      "type": "boolean",
++                      "default": false
++                    },
++                    "phone_numvers": {
++                      "type": "array",
++                      "items": {
++                        "type": "object"
++                      }
++                    },
++                    "role": {
++                      "type": "object",
++                      "properties": {
++                        "id": {
++                          "type": "number"
++                        },
++                        "name": {
++                          "type": "string"
++                        },
++                        "description": {
++                          "type": "string"
++                        },
++                        "type": {
++                          "type": "string"
++                        }
++                      }
++                    },
++                    "createdAt": {
++                      "type": "string",
++                      "format": "date-time"
++                    },
++                    "updatedAt": {
++                      "type": "string",
++                      "format": "date-time"
++                    },
++                    "publishedAt": {
++                      "type": "string",
++                      "format": "date-time"
++                    }
++                  }
+                 }
+               }
+             }
+diff --git a/src/index.ts b/src/index.ts
+index fb7ef36..76d1ee5 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -8,11 +8,93 @@ export default {
+    * This gives you an opportunity to extend code.
+    */
+   register({ strapi }: { strapi: Core.Strapi }) {
+-    // Add OAuth query parameters to the OpenAPI documentation for auth callback endpoint
++    // Add OAuth query parameters and user endpoint schemas to the OpenAPI documentation
+     if (strapi.plugin('documentation')) {
++      // Define the complete user schema with custom fields
++      const userSchema = {
++        type: 'object',
++        properties: {
++          id: { type: 'number' },
++          documentId: { type: 'string' },
++          username: { type: 'string' },
++          email: { type: 'string', format: 'email' },
++          provider: { type: 'string' },
++          confirmed: { type: 'boolean' },
++          blocked: { type: 'boolean' },
++          isPhoneVerified: { type: 'boolean', default: false },
++          phone_numvers: {
++            type: 'array',
++            items: { type: 'object' }
++          },
++          role: {
++            type: 'object',
++            properties: {
++              id: { type: 'number' },
++              name: { type: 'string' },
++              description: { type: 'string' },
++              type: { type: 'string' }
++            }
++          },
++          createdAt: { type: 'string', format: 'date-time' },
++          updatedAt: { type: 'string', format: 'date-time' },
++          publishedAt: { type: 'string', format: 'date-time' }
++        }
++      };
++
+       const override = {
+         info: { version: '1.0.0' },
+         paths: {
++          '/users/me': {
++            get: {
++              responses: {
++                '200': {
++                  description: 'Returns the authenticated user information',
++                  content: {
++                    'application/json': {
++                      schema: userSchema
++                    }
++                  }
++                }
++              }
++            }
++          },
++          '/users': {
++            get: {
++              responses: {
++                '200': {
++                  description: 'Returns a list of users',
++                  content: {
++                    'application/json': {
++                      schema: {
++                        type: 'object',
++                        properties: {
++                          data: {
++                            type: 'array',
++                            items: userSchema
++                          },
++                          meta: { type: 'object' }
++                        }
++                      }
++                    }
++                  }
++                }
++              }
++            }
++          },
++          '/users/{id}': {
++            get: {
++              responses: {
++                '200': {
++                  description: 'Returns a specific user',
++                  content: {
++                    'application/json': {
++                      schema: userSchema
++                    }
++                  }
++                }
++              }
++            }
++          },
+           '/auth/{provider}/callback': {
+             get: {
+               parameters: [

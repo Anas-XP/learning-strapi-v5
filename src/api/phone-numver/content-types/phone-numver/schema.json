@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "phone_numvers",
+  "info": {
+    "singularName": "phone-numver",
+    "pluralName": "phone-numvers",
+    "displayName": "PhoneNumver"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dumb_number": {
+      "type": "integer"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "phone_numvers"
+    }
+  }
+}
