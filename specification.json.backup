@@ -258,7 +258,54 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/ApiPhoneNumverPhoneNumverDocument"
+                        "type": "object",
+                        "properties": {
+                          "documentId": {
+                            "description": "The document ID, represented by a UUID",
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                          },
+                          "id": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          "dumb_number": {
+                            "description": "An integer field",
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "createdAt": {
+                            "description": "A datetime field",
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "description": "A datetime field",
+                            "type": "string"
+                          },
+                          "publishedAt": {
+                            "description": "A datetime field",
+                            "default": "2026-01-02T12:10:57.144Z",
+                            "type": "string"
+                          },
+                          "user": {
+                            "description": "A relational field",
+                            "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                          }
+                        },
+                        "required": [
+                          "documentId",
+                          "id",
+                          "publishedAt"
+                        ],
+                        "additionalProperties": false
                       }
                     }
                   },
@@ -360,7 +407,54 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/ApiPhoneNumverPhoneNumverDocument"
+                      "type": "object",
+                      "properties": {
+                        "documentId": {
+                          "description": "The document ID, represented by a UUID",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                        },
+                        "id": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        },
+                        "dumb_number": {
+                          "description": "An integer field",
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "createdAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "description": "A datetime field",
+                          "default": "2026-01-02T12:10:57.148Z",
+                          "type": "string"
+                        },
+                        "user": {
+                          "description": "A relational field",
+                          "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                        }
+                      },
+                      "required": [
+                        "documentId",
+                        "id",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -408,8 +502,8 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "type": "string",
-                        "format": "date-time"
+                        "default": "2026-01-02T12:10:57.148Z",
+                        "type": "string"
                       },
                       "user": {
                         "description": "A relational field",
@@ -612,7 +706,54 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/ApiPhoneNumverPhoneNumverDocument"
+                      "type": "object",
+                      "properties": {
+                        "documentId": {
+                          "description": "The document ID, represented by a UUID",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                        },
+                        "id": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        },
+                        "dumb_number": {
+                          "description": "An integer field",
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "createdAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "description": "A datetime field",
+                          "default": "2026-01-02T12:10:57.147Z",
+                          "type": "string"
+                        },
+                        "user": {
+                          "description": "A relational field",
+                          "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                        }
+                      },
+                      "required": [
+                        "documentId",
+                        "id",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -725,7 +866,54 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/ApiPhoneNumverPhoneNumverDocument"
+                      "type": "object",
+                      "properties": {
+                        "documentId": {
+                          "description": "The document ID, represented by a UUID",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                        },
+                        "id": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        },
+                        "dumb_number": {
+                          "description": "An integer field",
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "createdAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "description": "A datetime field",
+                          "default": "2026-01-02T12:10:57.149Z",
+                          "type": "string"
+                        },
+                        "user": {
+                          "description": "A relational field",
+                          "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                        }
+                      },
+                      "required": [
+                        "documentId",
+                        "id",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -773,8 +961,8 @@
                       },
                       "publishedAt": {
                         "description": "A datetime field",
-                        "type": "string",
-                        "format": "date-time"
+                        "default": "2026-01-02T12:10:57.149Z",
+                        "type": "string"
                       },
                       "user": {
                         "description": "A relational field",
@@ -898,7 +1086,54 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/ApiPhoneNumverPhoneNumverDocument"
+                      "type": "object",
+                      "properties": {
+                        "documentId": {
+                          "description": "The document ID, represented by a UUID",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                        },
+                        "id": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        },
+                        "dumb_number": {
+                          "description": "An integer field",
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "createdAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "description": "A datetime field",
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "description": "A datetime field",
+                          "default": "2026-01-02T12:10:57.149Z",
+                          "type": "string"
+                        },
+                        "user": {
+                          "description": "A relational field",
+                          "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                        }
+                      },
+                      "required": [
+                        "documentId",
+                        "id",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -2756,12 +2991,10 @@
                           ]
                         },
                         "createdAt": {
-                          "type": "string",
-                          "format": "date-time"
+                          "type": "string"
                         },
                         "updatedAt": {
-                          "type": "string",
-                          "format": "date-time"
+                          "type": "string"
                         },
                         "createdBy": {
                           "type": "number"
@@ -2889,12 +3122,10 @@
                             ]
                           },
                           "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
+                            "type": "string"
                           },
                           "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
+                            "type": "string"
                           },
                           "createdBy": {
                             "type": "number"
@@ -3250,12 +3481,10 @@
                         ]
                       },
                       "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
+                        "type": "string"
                       },
                       "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
+                        "type": "string"
                       },
                       "createdBy": {
                         "type": "number"
@@ -3481,12 +3710,10 @@
                       ]
                     },
                     "createdAt": {
-                      "type": "string",
-                      "format": "date-time"
+                      "type": "string"
                     },
                     "updatedAt": {
-                      "type": "string",
-                      "format": "date-time"
+                      "type": "string"
                     },
                     "createdBy": {
                       "type": "number"
@@ -3656,12 +3883,10 @@
                       ]
                     },
                     "createdAt": {
-                      "type": "string",
-                      "format": "date-time"
+                      "type": "string"
                     },
                     "updatedAt": {
-                      "type": "string",
-                      "format": "date-time"
+                      "type": "string"
                     },
                     "createdBy": {
                       "type": "number"
@@ -3743,12 +3968,10 @@
                         "maxLength": 2
                       },
                       "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
+                        "type": "string"
                       },
                       "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
+                        "type": "string"
                       },
                       "publishedAt": {
                         "anyOf": [
@@ -3847,7 +4070,98 @@
                       "type": "string"
                     },
                     "user": {
-                      "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "confirmed": {
+                          "type": "boolean"
+                        },
+                        "blocked": {
+                          "type": "boolean"
+                        },
+                        "role": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name",
+                                "description",
+                                "type",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "documentId",
+                        "username",
+                        "email",
+                        "provider",
+                        "confirmed",
+                        "blocked",
+                        "createdAt",
+                        "updatedAt",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -3925,7 +4239,98 @@
                           "type": "string"
                         },
                         "user": {
-                          "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string"
+                            },
+                            "provider": {
+                              "type": "string"
+                            },
+                            "confirmed": {
+                              "type": "boolean"
+                            },
+                            "blocked": {
+                              "type": "boolean"
+                            },
+                            "role": {
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "anyOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name",
+                                    "description",
+                                    "type",
+                                    "createdAt",
+                                    "updatedAt"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "publishedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "documentId",
+                            "username",
+                            "email",
+                            "provider",
+                            "confirmed",
+                            "blocked",
+                            "createdAt",
+                            "updatedAt",
+                            "publishedAt"
+                          ],
+                          "additionalProperties": false
                         }
                       },
                       "required": [
@@ -3938,7 +4343,98 @@
                       "type": "object",
                       "properties": {
                         "user": {
-                          "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string"
+                            },
+                            "provider": {
+                              "type": "string"
+                            },
+                            "confirmed": {
+                              "type": "boolean"
+                            },
+                            "blocked": {
+                              "type": "boolean"
+                            },
+                            "role": {
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "anyOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name",
+                                    "description",
+                                    "type",
+                                    "createdAt",
+                                    "updatedAt"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "publishedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "documentId",
+                            "username",
+                            "email",
+                            "provider",
+                            "confirmed",
+                            "blocked",
+                            "createdAt",
+                            "updatedAt",
+                            "publishedAt"
+                          ],
+                          "additionalProperties": false
                         }
                       },
                       "required": [
@@ -4013,51 +4509,6 @@
               "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "string"
             }
-          },
-          {
-            "name": "access_token",
-            "in": "query",
-            "required": false,
-            "description": "OAuth access token returned by provider",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "code",
-            "in": "query",
-            "required": false,
-            "description": "OAuth authorization code",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "state",
-            "in": "query",
-            "required": false,
-            "description": "OAuth state parameter for CSRF protection",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "error",
-            "in": "query",
-            "required": false,
-            "description": "OAuth error code if authentication failed",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "error_description",
-            "in": "query",
-            "required": false,
-            "description": "Human-readable error description",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -4076,7 +4527,98 @@
                       "type": "string"
                     },
                     "user": {
-                      "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "confirmed": {
+                          "type": "boolean"
+                        },
+                        "blocked": {
+                          "type": "boolean"
+                        },
+                        "role": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name",
+                                "description",
+                                "type",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "documentId",
+                        "username",
+                        "email",
+                        "provider",
+                        "confirmed",
+                        "blocked",
+                        "createdAt",
+                        "updatedAt",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -4106,8 +4648,7 @@
         },
         "tags": [
           "users-permissions"
-        ],
-        "description": "OAuth callback endpoint for third-party authentication providers"
+        ]
       }
     },
     "/auth/forgot-password": {
@@ -4197,7 +4738,98 @@
                       "type": "string"
                     },
                     "user": {
-                      "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "confirmed": {
+                          "type": "boolean"
+                        },
+                        "blocked": {
+                          "type": "boolean"
+                        },
+                        "role": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name",
+                                "description",
+                                "type",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "documentId",
+                        "username",
+                        "email",
+                        "provider",
+                        "confirmed",
+                        "blocked",
+                        "createdAt",
+                        "updatedAt",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -4297,8 +4929,7 @@
                   "type": "object",
                   "properties": {
                     "email": {
-                      "type": "string",
-                      "format": "email"
+                      "type": "string"
                     },
                     "sent": {
                       "type": "boolean"
@@ -4375,7 +5006,98 @@
                       "type": "string"
                     },
                     "user": {
-                      "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "confirmed": {
+                          "type": "boolean"
+                        },
+                        "blocked": {
+                          "type": "boolean"
+                        },
+                        "role": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name",
+                                "description",
+                                "type",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "documentId",
+                        "username",
+                        "email",
+                        "provider",
+                        "confirmed",
+                        "blocked",
+                        "createdAt",
+                        "updatedAt",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -4741,17 +5463,101 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "confirmed": {
+                        "type": "boolean"
+                      },
+                      "blocked": {
+                        "type": "boolean"
+                      },
+                      "role": {
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "name",
+                              "description",
+                              "type",
+                              "createdAt",
+                              "updatedAt"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      },
+                      "publishedAt": {
+                        "type": "string"
                       }
                     },
-                    "meta": {
-                      "type": "object"
-                    }
+                    "required": [
+                      "id",
+                      "documentId",
+                      "username",
+                      "email",
+                      "provider",
+                      "confirmed",
+                      "blocked",
+                      "createdAt",
+                      "updatedAt",
+                      "publishedAt"
+                    ],
+                    "additionalProperties": false
                   }
                 }
               }
@@ -4775,8 +5581,7 @@
         },
         "tags": [
           "users-permissions"
-        ],
-        "description": "Get a list of users (requires appropriate permissions)"
+        ]
       },
       "post": {
         "operationId": "users-permissions/post/users",
@@ -4787,7 +5592,99 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "confirmed": {
+                      "type": "boolean"
+                    },
+                    "blocked": {
+                      "type": "boolean"
+                    },
+                    "role": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "type",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "publishedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "documentId",
+                    "username",
+                    "email",
+                    "provider",
+                    "confirmed",
+                    "blocked",
+                    "createdAt",
+                    "updatedAt",
+                    "publishedAt"
+                  ],
+                  "additionalProperties": false
                 }
               }
             }
@@ -4909,16 +5806,99 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
-                },
-                "example": {
-                  "documentId": "12345678-1234-1234-1234-123456789012",
-                  "id": 1,
-                  "username": "current_user",
-                  "email": "user@example.com",
-                  "provider": "local",
-                  "confirmed": true,
-                  "blocked": false
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "confirmed": {
+                      "type": "boolean"
+                    },
+                    "blocked": {
+                      "type": "boolean"
+                    },
+                    "role": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "type",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "publishedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "documentId",
+                    "username",
+                    "email",
+                    "provider",
+                    "confirmed",
+                    "blocked",
+                    "createdAt",
+                    "updatedAt",
+                    "publishedAt"
+                  ],
+                  "additionalProperties": false
                 }
               }
             }
@@ -4941,8 +5921,7 @@
         },
         "tags": [
           "users-permissions"
-        ],
-        "description": "Get the authenticated user profile"
+        ]
       }
     },
     "/users/{id}": {
@@ -5018,7 +5997,99 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "confirmed": {
+                      "type": "boolean"
+                    },
+                    "blocked": {
+                      "type": "boolean"
+                    },
+                    "role": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "type",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "publishedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "documentId",
+                    "username",
+                    "email",
+                    "provider",
+                    "confirmed",
+                    "blocked",
+                    "createdAt",
+                    "updatedAt",
+                    "publishedAt"
+                  ],
+                  "additionalProperties": false
                 }
               }
             }
@@ -5041,8 +6112,7 @@
         },
         "tags": [
           "users-permissions"
-        ],
-        "description": "Get a specific user by ID"
+        ]
       },
       "put": {
         "operationId": "users-permissions/put/users_by_id",
@@ -5063,7 +6133,99 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "confirmed": {
+                      "type": "boolean"
+                    },
+                    "blocked": {
+                      "type": "boolean"
+                    },
+                    "role": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "type",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "publishedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "documentId",
+                    "username",
+                    "email",
+                    "provider",
+                    "confirmed",
+                    "blocked",
+                    "createdAt",
+                    "updatedAt",
+                    "publishedAt"
+                  ],
+                  "additionalProperties": false
                 }
               }
             }
@@ -5134,7 +6296,99 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PluginUsersPermissionsUserDocument"
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "confirmed": {
+                      "type": "boolean"
+                    },
+                    "blocked": {
+                      "type": "boolean"
+                    },
+                    "role": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "type",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "publishedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "documentId",
+                    "username",
+                    "email",
+                    "provider",
+                    "confirmed",
+                    "blocked",
+                    "createdAt",
+                    "updatedAt",
+                    "publishedAt"
+                  ],
+                  "additionalProperties": false
                 }
               }
             }
@@ -5184,7 +6438,101 @@
                   "type": "object",
                   "properties": {
                     "role": {
-                      "$ref": "#/components/schemas/PluginUsersPermissionsRoleDocument"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "publishedAt": {
+                          "type": "string"
+                        },
+                        "nb_users": {
+                          "type": "number"
+                        },
+                        "permissions": {
+                          "type": "object",
+                          "propertyNames": {
+                            "type": "string"
+                          },
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "controllers": {
+                                "type": "object",
+                                "propertyNames": {
+                                  "type": "string"
+                                },
+                                "additionalProperties": {
+                                  "type": "object",
+                                  "propertyNames": {
+                                    "type": "string"
+                                  },
+                                  "additionalProperties": {
+                                    "type": "object",
+                                    "properties": {
+                                      "enabled": {
+                                        "type": "boolean"
+                                      },
+                                      "policy": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "enabled",
+                                      "policy"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                }
+                              }
+                            },
+                            "required": [
+                              "controllers"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "users": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "documentId",
+                        "name",
+                        "description",
+                        "type",
+                        "createdAt",
+                        "updatedAt",
+                        "publishedAt"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -5232,7 +6580,101 @@
                     "roles": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/PluginUsersPermissionsRoleDocument"
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "publishedAt": {
+                            "type": "string"
+                          },
+                          "nb_users": {
+                            "type": "number"
+                          },
+                          "permissions": {
+                            "type": "object",
+                            "propertyNames": {
+                              "type": "string"
+                            },
+                            "additionalProperties": {
+                              "type": "object",
+                              "properties": {
+                                "controllers": {
+                                  "type": "object",
+                                  "propertyNames": {
+                                    "type": "string"
+                                  },
+                                  "additionalProperties": {
+                                    "type": "object",
+                                    "propertyNames": {
+                                      "type": "string"
+                                    },
+                                    "additionalProperties": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "boolean"
+                                        },
+                                        "policy": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "enabled",
+                                        "policy"
+                                      ],
+                                      "additionalProperties": false
+                                    }
+                                  }
+                                }
+                              },
+                              "required": [
+                                "controllers"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "users": {
+                            "type": "array",
+                            "items": {}
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "documentId",
+                          "name",
+                          "description",
+                          "type",
+                          "createdAt",
+                          "updatedAt",
+                          "publishedAt"
+                        ],
+                        "additionalProperties": false
                       }
                     }
                   },
@@ -5670,18 +7112,16 @@
           },
           "createdAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "updatedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "publishedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "default": "2026-01-02T12:10:57.146Z",
+            "type": "string"
           },
           "role": {
             "description": "A relational field",
@@ -5731,18 +7171,16 @@
           },
           "createdAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "updatedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "publishedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "default": "2026-01-02T12:10:57.145Z",
+            "type": "string"
           },
           "permissions": {
             "description": "A relational field",
@@ -5796,18 +7234,16 @@
           },
           "createdAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "updatedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "publishedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "default": "2026-01-02T12:10:57.146Z",
+            "type": "string"
           },
           "user": {
             "description": "A relational field",
@@ -5820,20 +7256,14 @@
           "publishedAt"
         ],
         "additionalProperties": false,
-        "id": "ApiPhoneNumverPhoneNumverDocument",
-        "description": "Phone number entity",
-        "example": {
-          "documentId": "12345678-1234-1234-1234-123456789012",
-          "id": 1,
-          "dumb_number": 1234567890
-        }
+        "id": "ApiPhoneNumverPhoneNumverDocument"
       },
       "PluginUsersPermissionsUserDocument": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "documentId": {
-            "description": "Unique document identifier (UUID v4)",
+            "description": "The document ID, represented by a UUID",
             "type": "string",
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
@@ -5849,11 +7279,11 @@
             ]
           },
           "username": {
-            "description": "User's unique username for authentication",
+            "description": "A string field",
             "type": "string"
           },
           "email": {
-            "description": "User's email address (unique, validated)",
+            "description": "An email field",
             "type": "string",
             "format": "email",
             "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
@@ -5863,7 +7293,7 @@
             "type": "string"
           },
           "confirmed": {
-            "description": "Whether email has been confirmed",
+            "description": "A boolean field",
             "default": false,
             "anyOf": [
               {
@@ -5875,7 +7305,7 @@
             ]
           },
           "blocked": {
-            "description": "Whether user is blocked from accessing the system",
+            "description": "A boolean field",
             "default": false,
             "anyOf": [
               {
@@ -5887,7 +7317,7 @@
             ]
           },
           "isPhoneVerified": {
-            "description": "Whether phone number has been verified",
+            "description": "A boolean field",
             "default": false,
             "anyOf": [
               {
@@ -5900,18 +7330,16 @@
           },
           "createdAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "updatedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           "publishedAt": {
             "description": "A datetime field",
-            "type": "string",
-            "format": "date-time"
+            "default": "2026-01-02T12:10:57.145Z",
+            "type": "string"
           },
           "role": {
             "description": "A relational field",
@@ -5936,20 +7364,7 @@
           "publishedAt"
         ],
         "additionalProperties": false,
-        "id": "PluginUsersPermissionsUserDocument",
-        "description": "User document with authentication and profile information",
-        "example": {
-          "documentId": "12345678-1234-1234-1234-123456789012",
-          "id": 1,
-          "username": "john_doe",
-          "email": "john@example.com",
-          "provider": "local",
-          "confirmed": true,
-          "blocked": false,
-          "isPhoneVerified": false,
-          "createdAt": "2024-01-01T00:00:00.000Z",
-          "updatedAt": "2024-01-01T00:00:00.000Z"
-        }
+        "id": "PluginUsersPermissionsUserDocument"
       }
     }
   }

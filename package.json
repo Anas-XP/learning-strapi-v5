@@ -14,7 +14,7 @@
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry",
-    "generate-specs": "strapi openapi generate && node scripts/patch-openapi-spec.js"
+    "generate-specs": "strapi openapi generate && node scripts/advanced-openapi-modifier.js"
   },
   "dependencies": {
     "@sensinum/strapi-plugin-mcp": "^1.1.0",

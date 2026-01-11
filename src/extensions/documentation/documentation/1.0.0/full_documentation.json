@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-01-02T11:25:24.040Z"
+    "x-generation-date": "2026-01-11T09:53:09.363Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -903,6 +903,10 @@
     },
     "/auth/{provider}/callback": {
       "get": {
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
+        "summary": "Default Callback from provider auth",
         "parameters": [
           {
             "name": "provider",
@@ -912,26 +916,30 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "access_token",
-            "in": "query",
-            "required": false,
-            "description": "OAuth 2.0 access token (used by some providers in implicit flow)",
-            "schema": {
-              "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a jwt token and user info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users-Permissions-UserRegistration"
+                }
+              }
             }
           },
-          {
-            "name": "code",
-            "in": "query",
-            "required": false,
-            "description": "OAuth 2.0 authorization code (used by Google, GitHub, Facebook)",
-            "schema": {
-              "type": "string"
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
             }
           }
-        ]
+        }
       }
     },
     "/auth/forgot-password": {
